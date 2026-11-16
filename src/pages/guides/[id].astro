@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import Affirmation from '../../components/Affirmation.astro';
+import { getCollection, getEntries, render } from 'astro:content';
+import { ETAPES } from '../../lib/liens';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((guide) => ({ params: { id: guide.id }, props: { guide } }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+const affirmations = await getEntries(guide.data.affirmations);
+
+const STATUTS = {
+  brouillon: 'Brouillon — contenu incomplet',
+  non_relu: 'Rédigé, pas encore relu par un tiers',
+  relu: 'Relu par un tiers',
+};
+---
+<Base titre={guide.data.titre} description={guide.data.resume}>
+  <p class="discret">{ETAPES[guide.data.etape].titre}</p>
+  <h1>{guide.data.titre}</h1>
+  <p class:list={['statut', guide.data.statut_relecture]}>
+    {STATUTS[guide.data.statut_relecture]} · vérifié le {guide.data.derniere_verification.toLocaleDateString('fr-FR')}
+  </p>
+
+  <h2>Points clés et sources</h2>
+  {affirmations.map((a) => <Affirmation affirmation={a} />)}
+
+  <div class="corps">
+    <Content />
+  </div>
+</Base>
+
+<style>
+  .statut { display: inline-block; font-size: .85rem; padding: .25rem .6rem; border-radius: 6px; background: var(--sable); }
+  .statut.brouillon { background: #fdecc8; }
+  .corps :global(blockquote) { margin: 1rem 0; padding: .5rem 1rem; background: var(--sable); border-left: 4px solid var(--lagon); }
+</style>

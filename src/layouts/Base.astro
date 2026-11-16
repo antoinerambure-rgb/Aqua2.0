@@ -1,0 +1,86 @@
+---
+import { lien } from '../lib/liens';
+
+interface Props {
+  titre: string;
+  description?: string;
+}
+const { titre, description = "Aide à la décision pour l'aquariophilie marine récifale, sourcée et traçable." } = Astro.props;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b3d5c" />
+    <link rel="icon" href={lien('favicon.svg')} type="image/svg+xml" />
+    <title>{titre} · Aqua2.0</title>
+  </head>
+  <body>
+    <header class="entete">
+      <a class="logo" href={lien('/')}>Aqua<span>2.0</span></a>
+      <nav aria-label="Navigation principale">
+        <a href={lien('guides/')}>Guides</a>
+        <a href={lien('outils/volume/')}>Outils</a>
+        <a href={lien('sources/')}>Sources</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="pied">
+      <p>
+        Aqua2.0 est un outil d'aide à la décision, pas un avis vétérinaire.
+        Mesurez toujours avant d'agir, et vérifiez les sources citées.
+      </p>
+      <p class="version">Version de développement — contenu en cours de rédaction.</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --ocean: #0b3d5c;
+    --lagon: #1b8a9e;
+    --sable: #f6f1e7;
+    --encre: #1d2329;
+    --gris: #5d6b75;
+    --ligne: #d9dee2;
+    --fait: #1f6f43;
+    --pratique: #1b5f8a;
+    --opinion: #7a4f9a;
+    --alerte-critique: #a3261b;
+    --alerte-eleve: #b35c00;
+    --rayon: 10px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: var(--encre);
+    background: #fff;
+    line-height: 1.55;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  main { max-width: 46rem; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+  h1 { font-size: 1.7rem; line-height: 1.2; color: var(--ocean); }
+  h2 { font-size: 1.25rem; color: var(--ocean); margin-top: 2rem; }
+  a { color: var(--lagon); }
+  .entete {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: .5rem 1rem; padding: .75rem 1rem; background: var(--ocean);
+  }
+  .entete a { color: #fff; text-decoration: none; }
+  .logo { font-weight: 800; font-size: 1.3rem; }
+  .logo span { color: #7fd6e3; }
+  .entete nav { display: flex; gap: 1rem; }
+  .entete nav a { opacity: .9; padding: .35rem 0; }
+  .entete nav a:hover, .entete nav a:focus-visible { opacity: 1; text-decoration: underline; }
+  .pied { border-top: 1px solid var(--ligne); color: var(--gris); font-size: .9rem; padding: 1rem; text-align: center; }
+  .pied .version { font-size: .8rem; }
+  .carte { border: 1px solid var(--ligne); border-radius: var(--rayon); padding: 1rem; background: #fff; }
+  .badge {
+    display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .03em;
+    padding: .1rem .5rem; border-radius: 999px; color: #fff; vertical-align: middle;
+  }
+  .discret { color: var(--gris); font-size: .9rem; }
+  :focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+</style>

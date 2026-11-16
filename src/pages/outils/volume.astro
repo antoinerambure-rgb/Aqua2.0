@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import CalculVolume from '../../components/CalculVolume.tsx';
+---
+<Base titre="Calculateur de volume" description="Volume intérieur et volume d'eau d'une cuve en verre.">
+  <h1>Volume de la cuve</h1>
+  <p>
+    Saisissez les dimensions <strong>extérieures</strong> de la cuve : l'épaisseur du verre est
+    déduite (deux parois sur la longueur et la largeur, un fond sur la hauteur).
+  </p>
+
+  <CalculVolume client:load />
+
+  <h2>Hypothèses et limites</h2>
+  <ul>
+    <li>Cuve rectangulaire, parois et fond de même épaisseur, sans renforts ni colonne de décantation intégrée.</li>
+    <li>Calcul géométrique pur (1 litre = 1 000 cm³) : il ne nécessite pas de source.</li>
+    <li>
+      Le <strong>volume net</strong>, une fois déduits les pierres, le sable et le matériel, n'est pas encore calculé :
+      ses hypothèses doivent être sourcées (prévu au jalon « Conception »).
+    </li>
+  </ul>
+</Base>
+
+<style is:global>
+  .calcul form { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+  .calcul label { display: flex; flex-direction: column; gap: .2rem; font-size: .95rem; }
+  .calcul input { font-size: 1.1rem; padding: .5rem .6rem; border: 1px solid var(--ligne); border-radius: 8px; }
+  .calcul small { color: var(--gris); }
+  .calcul .resultat { margin-top: 1.25rem; padding: 1rem; background: var(--sable); border-radius: var(--rayon); }
+  .calcul dl { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; }
+  .calcul dd { margin: 0; font-weight: 700; text-align: right; }
+  .calcul .total { font-size: 1.3rem; color: var(--ocean); }
+  .calcul .erreur { color: var(--alerte-critique); font-weight: 700; margin: 0; }
+</style>

@@ -1,0 +1,9 @@
+enonce: "Le cuivre utilisé comme traitement est très toxique pour les invertébrés (coraux, crevettes, escargots…). Le fabricant du Cupramine demande de les retirer tous avant traitement."
+statut: FAIT
+sources:
+  - source: seachem-cupramine
+    localisation: "Section « Before Treating »"
+confiance: moyenne
+risque_vivant: critique
+derniere_verification: 2026-11-16
+note: "Confiance « moyenne » uniquement parce que la seule source est un fabricant (niveau C). À renforcer au J1 avec une source A (ex. Noga 2010)."

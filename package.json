@@ -1,0 +1,28 @@
+{
+  "name": "aqua20",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aqua2.0 — aide à la décision pour l'aquariophilie marine récifale",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "verifier": "vitest run && astro check && astro build"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^6.1.6",
+    "astro": "^7.4.12",
+    "dexie": "^4.4.7",
+    "preact": "^11.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@types/node": "^26.6.6",
+    "typescript": "^6.0.3",
+    "vitest": "^5.1.0",
+    "yaml": "^2.9.1"
+  }
+}

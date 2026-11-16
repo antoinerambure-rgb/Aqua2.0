@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { lien, ETAPES } from '../lib/liens';
+
+const guides = await getCollection('guides');
+const nbParEtape = (etape: string) => guides.filter((g) => g.data.etape === etape).length;
+const nbSources = (await getCollection('sources')).length;
+---
+<Base titre="Accueil">
+  <h1>Votre récif, étape par étape</h1>
+  <p>
+    Aqua2.0 vous accompagne de la conception au dépannage d'un aquarium récifal.
+    Chaque information indique s'il s'agit d'un <strong>fait établi</strong>, d'une{' '}
+    <strong>pratique courante</strong> ou d'une <strong>opinion</strong>, avec ses sources
+    ({nbSources} références à ce jour).
+  </p>
+
+  <div class="etapes">
+    {Object.entries(ETAPES).map(([id, e], i) => (
+      <a class="carte etape" href={lien(`guides/#${id}`)}>
+        <span class="num">{i + 1}</span>
+        <strong>{e.titre}</strong>
+        <span class="discret">{e.description}</span>
+        <span class="discret compte">{nbParEtape(id)} fiche{nbParEtape(id) > 1 ? 's' : ''}</span>
+      </a>
+    ))}
+  </div>
+
+  <h2>Outils</h2>
+  <p><a href={lien('outils/volume/')}>Calculateur de volume de la cuve</a></p>
+</Base>
+
+<style>
+  .etapes { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .75rem; margin-top: 1.5rem; }
+  .etape { display: flex; flex-direction: column; gap: .25rem; text-decoration: none; color: inherit; }
+  .etape:hover, .etape:focus-visible { border-color: var(--lagon); }
+  .num { font-size: 1.6rem; font-weight: 800; color: var(--lagon); }
+  .compte { margin-top: auto; padding-top: .5rem; }
+</style>

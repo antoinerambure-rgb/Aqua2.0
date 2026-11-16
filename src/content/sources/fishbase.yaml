@@ -1,0 +1,9 @@
+type: base_de_donnees
+auteurs: ["Froese, R.", "Pauly, D. (éd.)"]
+titre: "FishBase"
+annee: null
+url: "https://www.fishbase.se"
+fiabilite: A
+licence: "CC BY-NC 4.0 — usage non commercial uniquement ; bloquant en cas de monétisation"
+consulte_le: 2026-11-16
+notes: "Citer aussi la référence d'origine de chaque donnée (Main Ref. / Data Ref.)."

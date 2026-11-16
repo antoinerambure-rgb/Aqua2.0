@@ -1,0 +1,70 @@
+---
+/**
+ * Affiche une affirmation avec son statut (fait / pratique / opinion),
+ * ses sources, leur niveau de fiabilité et, si besoin, un bandeau d'alerte.
+ */
+import { getEntry, type CollectionEntry } from 'astro:content';
+import { lien } from '../lib/liens';
+
+interface Props {
+  affirmation: CollectionEntry<'affirmations'>;
+}
+const { affirmation } = Astro.props;
+const a = affirmation.data;
+
+const sources = await Promise.all(
+  a.sources.map(async (s) => ({ entree: await getEntry(s.source), localisation: s.localisation })),
+);
+
+const LIBELLES = { FAIT: 'Fait établi', PRATIQUE: 'Pratique courante', OPINION: 'Opinion de la communauté' };
+const ALERTES = {
+  critique: 'Risque critique pour le vivant',
+  eleve: 'Risque élevé pour le vivant',
+};
+const alerte = a.risque_vivant === 'critique' || a.risque_vivant === 'eleve' ? a.risque_vivant : null;
+---
+<article class:list={['affirmation', alerte && `alerte-${alerte}`]}>
+  {alerte && <p class="bandeau" role="note">⚠ {ALERTES[alerte]}</p>}
+  <p class="entete-aff">
+    <span class:list={['badge', `statut-${a.statut.toLowerCase()}`]}>{LIBELLES[a.statut]}</span>
+    <span class="discret">Confiance : {a.confiance}</span>
+  </p>
+  <p class="enonce">{a.enonce}</p>
+  {a.note && <p class="discret note">{a.note}</p>}
+  <details>
+    <summary>
+      {sources.length === 0 ? 'Aucune source (opinion)' : `${sources.length} source${sources.length > 1 ? 's' : ''}`}
+      · {a.relu_par ? `relu par ${a.relu_par}` : 'non relu par un tiers'}
+      · vérifié le {a.derniere_verification.toLocaleDateString('fr-FR')}
+    </summary>
+    <ul>
+      {sources.map(({ entree, localisation }) => entree && (
+        <li>
+          <span class="badge fiab">{entree.data.fiabilite}</span>{' '}
+          <a href={lien(`sources/#${entree.id}`)}>{entree.data.auteurs.join(', ')} — {entree.data.titre}</a>
+          {entree.data.annee && ` (${entree.data.annee})`}, {localisation}
+        </li>
+      ))}
+    </ul>
+  </details>
+</article>
+
+<style>
+  .affirmation { border: 1px solid var(--ligne); border-left: 5px solid var(--lagon); border-radius: var(--rayon); padding: .75rem 1rem; margin: 1rem 0; }
+  .alerte-critique { border-left-color: var(--alerte-critique); }
+  .alerte-eleve { border-left-color: var(--alerte-eleve); }
+  .bandeau { margin: -.75rem -1rem .75rem; padding: .4rem 1rem; font-weight: 700; color: #fff; border-radius: 0 var(--rayon) 0 0; }
+  .alerte-critique .bandeau { background: var(--alerte-critique); }
+  .alerte-eleve .bandeau { background: var(--alerte-eleve); }
+  .entete-aff { display: flex; gap: .75rem; align-items: center; margin: 0 0 .25rem; }
+  .enonce { margin: .25rem 0; font-size: 1.02rem; }
+  .note { margin: .25rem 0; }
+  .statut-fait { background: var(--fait); }
+  .statut-pratique { background: var(--pratique); }
+  .statut-opinion { background: var(--opinion); }
+  .fiab { background: var(--gris); }
+  details { font-size: .9rem; margin-top: .5rem; }
+  summary { cursor: pointer; color: var(--gris); }
+  ul { padding-left: 1.1rem; }
+  li { margin: .3rem 0; }
+</style>

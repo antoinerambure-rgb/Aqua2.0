@@ -1,0 +1,10 @@
+enonce: "Le traitement au cuivre se fait dans un bac de quarantaine séparé, jamais dans le bac récifal principal, et la concentration doit être maintenue pendant toute la durée du traitement."
+statut: PRATIQUE
+sources:
+  - source: seachem-cupramine
+    localisation: "Mode d'emploi (maintien de la concentration)"
+  - source: humblefish-cuivre
+    localisation: "Message du 01/12/2018"
+confiance: haute
+risque_vivant: critique
+derniere_verification: 2026-11-16

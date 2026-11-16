@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { lien, ETAPES } from '../../lib/liens';
+
+const guides = (await getCollection('guides')).sort((a, b) => a.data.ordre - b.data.ordre);
+---
+<Base titre="Guides">
+  <h1>Guides</h1>
+  {Object.entries(ETAPES).map(([id, e]) => {
+    const liste = guides.filter((g) => g.data.etape === id);
+    return (
+      <section id={id}>
+        <h2>{e.titre}</h2>
+        {liste.length === 0
+          ? <p class="discret">Aucune fiche pour l'instant.</p>
+          : <ul>{liste.map((g) => <li><a href={lien(`guides/${g.id}/`)}>{g.data.titre}</a> <span class="discret">— {g.data.resume}</span></li>)}</ul>}
+      </section>
+    );
+  })}
+</Base>

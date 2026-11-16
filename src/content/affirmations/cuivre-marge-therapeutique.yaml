@@ -1,0 +1,9 @@
+enonce: "Pour le Cupramine, le fabricant indique une dose thérapeutique minimale de 0,2 mg/L et une dose toxique pour les poissons de 0,8 mg/L : la marge existe mais impose un test de cuivre fiable."
+statut: FAIT
+sources:
+  - source: seachem-cupramine
+    localisation: "Description du produit"
+confiance: moyenne
+risque_vivant: critique
+derniere_verification: 2026-11-16
+note: "Valeurs propres à CE produit. Les autres formes de cuivre (chélaté, sulfate…) ont d'autres concentrations cibles : ne jamais transposer."

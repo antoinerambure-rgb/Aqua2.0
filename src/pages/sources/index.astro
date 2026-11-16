@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const sources = (await getCollection('sources')).sort(
+  (a, b) => a.data.fiabilite.localeCompare(b.data.fiabilite) || a.data.auteurs[0].localeCompare(b.data.auteurs[0]),
+);
+
+const NIVEAUX = {
+  A: 'Littérature scientifique, manuels universitaires, bases de données scientifiques de référence',
+  B: 'Ouvrages de référence du récifal et articles de spécialistes reconnus',
+  C: 'Fabricants et commerçants — fiables pour leur propre produit, conflit d’intérêts possible',
+  D: 'Forums et retours d’expérience — pour qualifier une pratique ou une opinion, jamais seuls pour un fait',
+} as const;
+---
+<Base titre="Sources">
+  <h1>Bibliographie</h1>
+  <p>Chaque source porte un niveau de fiabilité :</p>
+  <dl class="niveaux">
+    {Object.entries(NIVEAUX).map(([n, d]) => <><dt><span class="badge">{n}</span></dt><dd>{d}</dd></>)}
+  </dl>
+
+  {(['A', 'B', 'C', 'D'] as const).map((niveau) => {
+    const liste = sources.filter((s) => s.data.fiabilite === niveau);
+    return liste.length > 0 && (
+      <section>
+        <h2>Niveau {niveau}</h2>
+        {liste.map(({ id, data: s }) => (
+          <article class="carte source" id={id}>
+            <p class="ref">
+              {s.auteurs.join(', ')}{s.annee && ` (${s.annee})`}. <em>{s.titre}</em>
+              {s.editeur && `. ${s.editeur}`}.
+              {s.isbn && ` ISBN ${s.isbn}.`}
+              {s.doi && <> DOI <a href={`https://doi.org/${s.doi}`}>{s.doi}</a>.</>}
+              {s.url && <> <a href={s.url} rel="noopener">Lien</a></>}
+            </p>
+            {s.a_verifier && <p class="verif">⚠ Référence à vérifier</p>}
+            <p class="discret">Licence : {s.licence} · consulté le {s.consulte_le.toLocaleDateString('fr-FR')}</p>
+            {s.notes && <p class="discret">{s.notes}</p>}
+          </article>
+        ))}
+      </section>
+    );
+  })}
+</Base>
+
+<style>
+  .niveaux { display: grid; grid-template-columns: auto 1fr; gap: .4rem .75rem; align-items: baseline; }
+  .niveaux dd { margin: 0; }
+  .badge { background: var(--gris); }
+  .source { margin: .75rem 0; scroll-margin-top: 1rem; }
+  .source:target { border-color: var(--lagon); box-shadow: 0 0 0 2px var(--lagon); }
+  .ref { margin: 0 0 .25rem; }
+  .verif { color: var(--alerte-eleve); font-weight: 700; margin: .25rem 0; }
+  .source .discret { margin: .2rem 0; }
+</style>
