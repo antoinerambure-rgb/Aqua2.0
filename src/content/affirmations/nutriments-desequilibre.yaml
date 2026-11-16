@@ -1,0 +1,8 @@
+enonce: "Un excès d'azote dissous associé à un manque de phosphate peut affamer en phosphate les algues symbiotiques des coraux et les rendre plus sensibles au blanchiment dû à la chaleur ou à la lumière."
+statut: FAIT
+sources:
+  - { source: wiedenmann-2013, localisation: "Résumé" }
+confiance: haute
+risque_vivant: eleve
+derniere_verification: 2026-11-16
+note: "Résultat expérimental sur des coraux en laboratoire. Son application aux bacs (ne pas faire chuter le phosphate à zéro quand le nitrate reste élevé) est une déduction, pas une mesure en aquarium."

@@ -1,0 +1,7 @@
+enonce: "Recommandation pour un bac récifal : phosphate entre 0,02 et 0,1 ppm. En surface, l'océan peut descendre à 0,005 ppm."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Phosphate (mise à jour 2022)" }
+confiance: haute
+derniere_verification: 2026-11-16
+note: "Ici « phosphate » désigne l'ion phosphate (PO4). Vérifier sur la notice si votre test exprime le résultat en phosphate (PO4) ou en phosphore (P) : les valeurs ne sont pas les mêmes."

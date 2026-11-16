@@ -1,0 +1,9 @@
+nom: Calcium
+symbole: Ca
+unite: mg/L
+ordre: 4
+pourquoi: "Avec les carbonates, le calcium forme le squelette en carbonate de calcium des coraux durs et des algues calcaires."
+naturel: { texte: "412 mg/kg (≈ 420 mg/L)", affirmation: calcium-naturel }
+cible: { min: 380, max: 450, affirmation: calcium-cible }
+statut_relecture: non_relu
+derniere_verification: 2026-11-16

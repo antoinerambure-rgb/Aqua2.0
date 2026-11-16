@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { lien } from '../../lib/liens';
+import { formaterFr } from '../../lib/calculs/unites';
+
+const parametres = (await getCollection('parametres')).sort((a, b) => a.data.ordre - b.data.ordre);
+const plageTexte = (min: number, max: number, unite: string) =>
+  (min === max ? formaterFr(min) : `${formaterFr(min)} – ${formaterFr(max)}`) + (unite ? ` ${unite}` : '');
+---
+<Base titre="Paramètres de l'eau" description="Valeurs recommandées pour un aquarium récifal, avec leurs sources.">
+  <h1>Paramètres de l'eau</h1>
+  <p>
+    Valeurs recommandées pour un bac récifal, comparées à l'eau de mer naturelle.
+    Touchez un paramètre pour voir d'où vient chaque chiffre.
+  </p>
+
+  <table>
+    <thead>
+      <tr><th scope="col">Paramètre</th><th scope="col">Cible en aquarium</th><th scope="col">Eau de mer naturelle</th></tr>
+    </thead>
+    <tbody>
+      {parametres.map(({ id, data: p }) => (
+        <tr>
+          <th scope="row"><a href={lien(`parametres/${id}/`)}>{p.nom}</a> <span class="discret">{p.symbole}</span></th>
+          <td class="cible">{plageTexte(p.cible.min, p.cible.max, p.unite)}</td>
+          <td class="discret">{p.naturel?.texte ?? '—'}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <p class="discret">
+    Unités : ‰ (ppt) = grammes de sels par kilogramme d'eau de mer ; mg/L ≈ ppm ; dKH = degré allemand de dureté carbonatée.
+    Une valeur ne suffit jamais seule : la <strong>stabilité</strong> et la <strong>tendance</strong> comptent
+    autant. Mesurez avant d'agir.
+  </p>
+</Base>
+
+<style>
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .95rem; }
+  th, td { text-align: left; padding: .6rem .4rem; border-bottom: 1px solid var(--ligne); vertical-align: top; }
+  thead th { font-size: .85rem; color: var(--gris); font-weight: 600; }
+  tbody th { font-weight: 600; }
+  .cible { font-weight: 700; color: var(--ocean); white-space: nowrap; }
+</style>

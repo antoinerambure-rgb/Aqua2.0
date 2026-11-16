@@ -1,0 +1,9 @@
+type: base_de_donnees
+auteurs: ["NOAA Coral Reef Watch"]
+titre: "5km Degree Heating Week (DHW) Product — tutoriel"
+annee: null
+url: "https://coralreefwatch.noaa.gov/product/5km/tutorial/crw10a_dhw_product.php"
+fiabilite: A
+licence: "Domaine public (gouvernement des États-Unis)"
+consulte_le: 2026-11-16
+notes: "Définit le seuil de blanchiment (moyenne mensuelle maximale + 1 °C), d'après Glynn et D'Croz (1990)."

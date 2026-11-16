@@ -1,0 +1,7 @@
+enonce: "L'alcalinité totale de l'eau de mer de surface est d'environ 2 300 µmol/kg. Holmes-Farley retient comme valeur typique 2,5 meq/L, soit 7 dKH."
+statut: FAIT
+sources:
+  - { source: mit-ocw-12742, localisation: "Cours 7, figure de décomposition de l'alcalinité" }
+  - { source: holmes-farley-2004-parametres, localisation: "Tableau 1" }
+confiance: haute
+derniere_verification: 2026-11-16

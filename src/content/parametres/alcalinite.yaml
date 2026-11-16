@@ -1,0 +1,10 @@
+nom: Alcalinité
+symbole: KH
+unite: dKH
+ordre: 3
+pourquoi: "Mesure des carbonates et bicarbonates dissous, que les coraux durs consomment pour construire leur squelette en carbonate de calcium. S'exprime en dKH ou en meq/L."
+naturel: { texte: "≈ 7 dKH (2,5 meq/L) ; alcalinité totale de surface ≈ 2 300 µmol/kg", affirmation: kh-naturel }
+cible: { min: 7, max: 11, affirmation: kh-cible }
+affirmations: [kh-stabilite, kh-conversion]
+statut_relecture: non_relu
+derniere_verification: 2026-11-16

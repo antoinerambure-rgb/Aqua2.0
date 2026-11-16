@@ -1,0 +1,7 @@
+enonce: "Recommandation pour un bac récifal : alcalinité de 7 à 11 dKH (2,5 à 4 meq/L). Pour les bacs à coraux durs (SPS) pauvres en nutriments, l'auteur conseille plutôt 7 à 8 dKH."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Alkalinity" }
+  - { source: holmes-farley-2004-parametres, localisation: "Tableau 1" }
+confiance: haute
+derniere_verification: 2026-11-16

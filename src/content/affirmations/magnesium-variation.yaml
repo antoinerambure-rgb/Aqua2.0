@@ -1,0 +1,7 @@
+enonce: "Dans des conditions normales, ne pas augmenter le magnésium de plus de 100 ppm par jour."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Magnesium" }
+confiance: haute
+risque_vivant: eleve
+derniere_verification: 2026-11-16

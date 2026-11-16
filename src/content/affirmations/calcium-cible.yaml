@@ -1,0 +1,7 @@
+enonce: "Recommandation pour un bac récifal : calcium entre 380 et 450 ppm (mg/L)."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Calcium" }
+  - { source: holmes-farley-2004-parametres, localisation: "Tableau 1" }
+confiance: haute
+derniere_verification: 2026-11-16

@@ -1,0 +1,8 @@
+enonce: "L'eau de mer de référence (salinité 35) contient 1 284 mg de magnésium par kg. Holmes-Farley retient environ 1 280–1 285 ppm."
+statut: FAIT
+sources:
+  - { source: millero-2008, localisation: "Composition de référence, ion Mg²⁺ (1,28372 g/kg)" }
+  - { source: holmes-farley-2022-optimal, localisation: "Section Magnesium" }
+confiance: moyenne
+derniere_verification: 2026-11-16
+note: "Même remarque mg/kg / mg/L que pour le calcium. Confiance moyenne tant que la valeur n'a pas été contrôlée sur l'article original."

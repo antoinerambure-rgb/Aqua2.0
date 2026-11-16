@@ -1,0 +1,8 @@
+enonce: "Recommandation pour un bac récifal : salinité de 35 ‰ (ppt), soit une densité de 1,0264 ou une conductivité de 53 mS/cm. Sur les récifs, l'eau est en général entre 34 et 36 ‰."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Salinity" }
+  - { source: holmes-farley-2004-parametres, localisation: "Tableau 1" }
+confiance: haute
+derniere_verification: 2026-11-16
+note: "La densité dépend de la température : un densimètre ou un réfractomètre doit être lu selon sa notice (étalonnage et température)."

@@ -1,0 +1,6 @@
+enonce: "L'eau de mer de référence des océanographes a une salinité pratique de 35, soit environ 35,17 g de sels dissous par kg d'eau de mer."
+statut: FAIT
+sources:
+  - { source: millero-2008, localisation: "Résumé (salinité de référence SR = 35,16504 g/kg pour SP = 35)" }
+confiance: haute
+derniere_verification: 2026-11-16

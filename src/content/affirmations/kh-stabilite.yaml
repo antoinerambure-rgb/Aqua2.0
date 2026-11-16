@@ -1,0 +1,8 @@
+enonce: "Une alcalinité trop élevée, ou qui varie trop, peut provoquer des « pointes brûlées » chez les coraux durs SPS."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Alkalinity" }
+confiance: moyenne
+risque_vivant: eleve
+derniere_verification: 2026-11-16
+note: "L'auteur ne donne pas de variation journalière maximale chiffrée : Aqua2.0 n'en affiche donc pas pour l'instant."

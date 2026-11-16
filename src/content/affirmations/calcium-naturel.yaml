@@ -1,0 +1,8 @@
+enonce: "L'eau de mer de référence (salinité 35) contient 412 mg de calcium par kg. Holmes-Farley retient environ 420 ppm pour l'eau de mer naturelle."
+statut: FAIT
+sources:
+  - { source: millero-2008, localisation: "Composition de référence, ion Ca²⁺ (0,41208 g/kg)" }
+  - { source: holmes-farley-2004-parametres, localisation: "Tableau 1" }
+confiance: moyenne
+derniere_verification: 2026-11-16
+note: "Les mg/kg (océanographie) et les mg/L (tests d'aquarium) diffèrent d'environ 2,6 % (densité 1,0264 à 35 ‰). Confiance moyenne tant que la valeur n'a pas été contrôlée sur l'article original."

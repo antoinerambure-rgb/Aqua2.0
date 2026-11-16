@@ -1,0 +1,10 @@
+nom: Phosphate
+symbole: PO4
+unite: mg/L
+ordre: 7
+pourquoi: "Nutriment qui, sans contrôle, s'accumule en aquarium ; le maintenir assez bas aide à limiter les algues, sans le faire tomber à zéro."
+naturel: { texte: "jusqu'à 0,005 mg/L en surface de l'océan", affirmation: phosphate-cible }
+cible: { min: 0.02, max: 0.1, affirmation: phosphate-cible }
+affirmations: [nutriments-desequilibre]
+statut_relecture: non_relu
+derniere_verification: 2026-11-16

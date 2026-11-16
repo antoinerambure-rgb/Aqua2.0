@@ -1,0 +1,10 @@
+nom: Salinité
+symbole: Sal.
+unite: "‰"
+ordre: 1
+pourquoi: "Quantité de sels dissous dans l'eau. Elle se mesure au réfractomètre, au densimètre ou au conductimètre, et s'exprime en ‰ (ppt), en densité ou en conductivité."
+naturel: { texte: "35 (salinité pratique de référence) ; 34 à 36 ‰ sur les récifs", affirmation: salinite-reference }
+cible: { min: 35, max: 35, affirmation: salinite-cible }
+affirmations: [salinite-reference]
+statut_relecture: non_relu
+derniere_verification: 2026-11-16

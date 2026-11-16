@@ -1,0 +1,11 @@
+nom: Magnésium
+symbole: Mg
+unite: mg/L
+ordre: 5
+pourquoi: "Son rôle principal en aquarium est son interaction avec l'équilibre calcium–alcalinité."
+naturel: { texte: "1 284 mg/kg (≈ 1 280–1 285 mg/L)", affirmation: magnesium-naturel }
+cible: { min: 1250, max: 1350, affirmation: magnesium-cible }
+acceptable: { min: 1250, max: 1400, affirmation: magnesium-cible }
+variation_max_jour: { valeur: 100, affirmation: magnesium-variation }
+statut_relecture: non_relu
+derniere_verification: 2026-11-16

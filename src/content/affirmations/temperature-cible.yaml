@@ -1,0 +1,9 @@
+enonce: "Recommandation pour un bac récifal : 76 à 83 °F, soit environ 24,4 à 28,3 °C, sans dépasser 83 °F (28,3 °C) sans raison précise. L'eau des récifs coralliens est en moyenne autour de 83–86 °F (28,3–30 °C)."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Temperature" }
+  - { source: holmes-farley-2004-parametres, localisation: "Tableau 1" }
+confiance: haute
+risque_vivant: eleve
+derniere_verification: 2026-11-16
+note: "Conversions °F → °C faites par Aqua2.0 et arrondies au dixième."

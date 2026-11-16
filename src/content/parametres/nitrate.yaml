@@ -1,0 +1,9 @@
+nom: Nitrate
+symbole: NO3
+unite: mg/L
+ordre: 6
+pourquoi: "Forme azotée qui s'accumule en fin de cycle de l'azote. C'est un nutriment : trop peu comme trop en excès peut poser problème."
+cible: { min: 2, max: 10, affirmation: nitrate-cible }
+affirmations: [nutriments-desequilibre]
+statut_relecture: non_relu
+derniere_verification: 2026-11-16

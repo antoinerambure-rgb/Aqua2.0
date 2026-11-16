@@ -1,0 +1,6 @@
+enonce: "Conversion des unités d'alcalinité : 1 meq/L = 2,8 dKH = 50 mg/L en équivalent CaCO3 ; inversement, 1 dKH = 0,357 meq/L."
+statut: FAIT
+sources:
+  - { source: dardel-unites, localisation: "Tableau des unités de concentration" }
+confiance: haute
+derniere_verification: 2026-11-16

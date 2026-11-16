@@ -1,0 +1,10 @@
+nom: Température
+symbole: T°
+unite: "°C"
+ordre: 2
+pourquoi: "Température de l'eau, réglée par le chauffage et, si besoin, un refroidissement. Les coraux sont sensibles aux excès de chaleur, qui peuvent provoquer leur blanchiment."
+naturel: { texte: "≈ 28,3 à 30 °C en moyenne sur les récifs", affirmation: temperature-cible }
+cible: { min: 24.4, max: 28.3, affirmation: temperature-cible }
+affirmations: [temperature-seuil-blanchiment]
+statut_relecture: non_relu
+derniere_verification: 2026-11-16

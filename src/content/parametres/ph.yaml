@@ -1,0 +1,10 @@
+nom: pH
+symbole: pH
+unite: ""
+ordre: 8
+pourquoi: "Acidité de l'eau, sans unité. Il dépend notamment de l'alcalinité et du gaz carbonique dissous."
+naturel: { texte: "≈ 8,0 à 8,3", affirmation: ph-cible }
+cible: { min: 8.1, max: 8.3, affirmation: ph-cible }
+acceptable: { min: 7.8, max: 8.5, affirmation: ph-cible }
+statut_relecture: non_relu
+derniere_verification: 2026-11-16

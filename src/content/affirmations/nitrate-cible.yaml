@@ -1,0 +1,8 @@
+enonce: "Recommandation pour un bac récifal : nitrate entre 2 et 10 ppm. L'auteur précise qu'il vaut mieux être un peu au-dessus de cette plage qu'en dessous."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Nitrate (mise à jour 2022)" }
+  - { source: holmes-farley-nitrates-forum, localisation: "Réponse de l'auteur" }
+confiance: haute
+derniere_verification: 2026-11-16
+note: "Les recommandations de 2004 étaient beaucoup plus basses : la pratique a évolué vers des bacs moins pauvres en nutriments."

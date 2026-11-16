@@ -1,0 +1,9 @@
+enonce: "En milieu naturel, la NOAA situe le seuil de stress thermique d'un récif à 1 °C au-dessus de la moyenne du mois le plus chaud de ce récif ; plus l'écart dure, plus le blanchiment devient probable."
+statut: FAIT
+sources:
+  - { source: noaa-crw-dhw, localisation: "Tutoriel DHW, définition du seuil (d'après Glynn et D'Croz, 1990)" }
+  - { source: nasa-svs-dhw, localisation: "Interprétation des valeurs de DHW" }
+confiance: haute
+risque_vivant: eleve
+derniere_verification: 2026-11-16
+note: "Les DHW (degrés-semaines) cumulent ces dépassements sur 12 semaines : entre 4 et 8, un blanchiment important est probable ; au-delà de 8, un blanchiment massif avec forte mortalité. Ce sont des repères pour les récifs naturels, pas des consignes d'aquarium."

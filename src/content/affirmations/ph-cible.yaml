@@ -1,0 +1,7 @@
+enonce: "Recommandation pour un bac récifal : pH de 7,8 à 8,5 acceptable, 8,1 à 8,3 étant meilleur (objectif d'environ 8,2). L'eau de mer naturelle est entre 8,0 et 8,3 environ."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section pH" }
+  - { source: holmes-farley-2004-parametres, localisation: "Tableau 1" }
+confiance: haute
+derniere_verification: 2026-11-16

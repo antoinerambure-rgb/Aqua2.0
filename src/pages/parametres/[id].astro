@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Affirmation from '../../components/Affirmation.astro';
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import { lien } from '../../lib/liens';
+import { formaterFr, dkhVersMeqL } from '../../lib/calculs/unites';
+
+export async function getStaticPaths() {
+  const parametres = await getCollection('parametres');
+  return parametres.map((parametre) => ({ params: { id: parametre.id }, props: { parametre } }));
+}
+
+const { parametre } = Astro.props;
+const p = parametre.data;
+
+const plageTexte = (min: number, max: number) =>
+  (min === max ? formaterFr(min) : `${formaterFr(min)} à ${formaterFr(max)}`) + (p.unite ? ` ${p.unite}` : '');
+/** Pour l'alcalinité, on affiche aussi l'équivalent en meq/L. */
+const equivalent = (min: number, max: number) =>
+  p.unite === 'dKH' ? ` (≈ ${formaterFr(dkhVersMeqL(min), 1)} à ${formaterFr(dkhVersMeqL(max), 1)} meq/L)` : '';
+
+// Toutes les affirmations citées, sans doublon, dans l'ordre d'apparition.
+const refs = [
+  p.cible.affirmation,
+  p.acceptable?.affirmation,
+  p.variation_max_jour?.affirmation,
+  p.naturel?.affirmation,
+  ...p.affirmations,
+].filter((r): r is NonNullable<typeof r> => Boolean(r));
+const ids = [...new Set(refs.map((r) => r.id))];
+const affirmations = (await Promise.all(ids.map((id) => getEntry('affirmations', id)))).filter(
+  (a): a is CollectionEntry<'affirmations'> => Boolean(a),
+);
+---
+<Base titre={p.nom} description={`${p.nom} en aquarium récifal : valeurs recommandées et sources.`}>
+  <p class="discret"><a href={lien('parametres/')}>Paramètres</a></p>
+  <h1>{p.nom} <span class="symbole">{p.symbole}</span></h1>
+  <p>{p.pourquoi}</p>
+
+  <dl class="valeurs">
+    <div class="principal">
+      <dt>Cible en aquarium</dt>
+      <dd>{plageTexte(p.cible.min, p.cible.max)}{equivalent(p.cible.min, p.cible.max)}</dd>
+    </div>
+    {p.acceptable && (
+      <div>
+        <dt>Encore acceptable</dt>
+        <dd>{plageTexte(p.acceptable.min, p.acceptable.max)}{equivalent(p.acceptable.min, p.acceptable.max)}</dd>
+      </div>
+    )}
+    {p.variation_max_jour && (
+      <div class="alerte">
+        <dt>Variation maximale</dt>
+        <dd>{formaterFr(p.variation_max_jour.valeur)} {p.unite} par jour</dd>
+      </div>
+    )}
+    {p.naturel && (
+      <div>
+        <dt>Eau de mer naturelle</dt>
+        <dd>{p.naturel.texte}</dd>
+      </div>
+    )}
+  </dl>
+
+  <h2>D'où viennent ces chiffres</h2>
+  {affirmations.map((a) => <Affirmation affirmation={a} />)}
+
+  <p class="discret">
+    Fiche {p.statut_relecture === 'relu' ? 'relue par un tiers' : 'pas encore relue par un tiers'} ·
+    vérifiée le {p.derniere_verification.toLocaleDateString('fr-FR')}
+  </p>
+</Base>
+
+<style>
+  .symbole { font-size: 1rem; color: var(--gris); font-weight: 600; }
+  .valeurs { display: grid; gap: .5rem; margin: 1.25rem 0; }
+  .valeurs > div { background: var(--sable); border-radius: var(--rayon); padding: .6rem .9rem; }
+  .valeurs dt { font-size: .85rem; color: var(--gris); }
+  .valeurs dd { margin: 0; font-weight: 700; font-size: 1.1rem; }
+  .valeurs .principal { background: var(--ocean); color: #fff; }
+  .valeurs .principal dt { color: #cfe8ee; }
+  .valeurs .principal dd { font-size: 1.4rem; }
+  .valeurs .alerte { border-left: 5px solid var(--alerte-eleve); }
+</style>

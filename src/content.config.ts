@@ -100,4 +100,42 @@ const guides = defineCollection({
   }),
 });
 
-export const collections = { sources, affirmations, guides };
+// ---------------------------------------------------------------------------
+// PARAMÈTRES : salinité, température, KH, Ca, Mg, NO3, PO4, pH…
+// Chaque plage chiffrée DOIT renvoyer vers l'affirmation qui la justifie.
+// ---------------------------------------------------------------------------
+const plage = z
+  .object({
+    min: z.number(),
+    max: z.number(),
+    affirmation: reference('affirmations'),
+  })
+  .refine((p) => p.min <= p.max, { message: 'min doit être inférieur ou égal à max.' });
+
+const parametres = defineCollection({
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/parametres' }),
+  schema: z.object({
+    nom: z.string(),
+    symbole: z.string(),
+    /** Unité d'affichage par défaut (unités françaises). */
+    unite: z.enum(['°C', '‰', 'dKH', 'mg/L', '']),
+    ordre: z.number(),
+    pourquoi: z.string().min(10),
+    /** Valeur dans l'eau de mer naturelle, en texte libre (unités parfois différentes). */
+    naturel: z.object({ texte: z.string(), affirmation: reference('affirmations') }).optional(),
+    /** Plage recommandée en aquarium. */
+    cible: plage,
+    /** Plage encore acceptable, plus large que la cible (facultatif). */
+    acceptable: plage.optional(),
+    /** Variation maximale par jour (facultatif — seulement si une source la chiffre). */
+    variation_max_jour: z
+      .object({ valeur: z.number().positive(), affirmation: reference('affirmations') })
+      .optional(),
+    /** Autres affirmations utiles affichées sur la fiche. */
+    affirmations: z.array(reference('affirmations')).default([]),
+    statut_relecture: z.enum(['brouillon', 'non_relu', 'relu']),
+    derniere_verification: dateISO,
+  }),
+});
+
+export const collections = { sources, affirmations, guides, parametres };

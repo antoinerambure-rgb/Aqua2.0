@@ -1,0 +1,7 @@
+enonce: "Recommandation pour un bac récifal : magnésium entre 1 250 et 1 350 ppm ; 1 250 à 1 400 ppm reste probablement acceptable."
+statut: PRATIQUE
+sources:
+  - { source: holmes-farley-2022-optimal, localisation: "Section Magnesium" }
+  - { source: holmes-farley-2004-parametres, localisation: "Tableau 1 et section Magnesium" }
+confiance: haute
+derniere_verification: 2026-11-16
